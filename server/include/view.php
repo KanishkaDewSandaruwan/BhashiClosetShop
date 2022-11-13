@@ -12,37 +12,7 @@ function getAllCategory()
     return mysqli_query($con, $viewcat);
 }
 
-function getAllColor()
-{
-    include 'connection.php';
 
-    $viewcat = "SELECT * FROM colors WHERE is_deleted = '0' ";
-    return mysqli_query($con, $viewcat);
-}
-
-function getAllColorByID($color_id)
-{
-    include 'connection.php';
-
-    $viewcat = "SELECT * FROM colors WHERE is_deleted = '0' AND color_id = '$color_id' ";
-    return mysqli_query($con, $viewcat);
-}
-
-function getAllsize()
-{
-    include 'connection.php';
-
-    $viewcat = "SELECT * FROM size WHERE is_deleted = '0' ";
-    return mysqli_query($con, $viewcat);
-}
-
-function getAllsizeByID($size_id)
-{
-    include 'connection.php';
-
-    $viewcat = "SELECT * FROM size WHERE is_deleted = '0' AND size_id = '$size_id' ";
-    return mysqli_query($con, $viewcat);
-}
 
 function getAllSubcat()
 {
@@ -51,6 +21,15 @@ function getAllSubcat()
     $viewcat = "SELECT * FROM category WHERE is_deleted = '0' AND sub_category != '0' ";
     return mysqli_query($con, $viewcat);
 }
+
+function getAllProductItemsByCategory($cat_id)
+{
+    include 'connection.php';
+
+    $viewcat = "SELECT * FROM products WHERE is_deleted = 0 AND product_active = 1 AND cat_id = '$cat_id' ORDER BY date_updated DESC";
+    return mysqli_query($con, $viewcat);
+}
+
 
 function getAllParentCategory()
 {
@@ -235,6 +214,7 @@ function getLoginAdmin($data){
     }
 	return mysqli_num_rows($count_loginAdmin);
 }
+
 
 function checkCustomerByEmail($email){
 	include 'connection.php';

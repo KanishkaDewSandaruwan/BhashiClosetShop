@@ -90,20 +90,10 @@ checkSelection = (id, field) => {
     window.location.href = "shop.php?id=" + id + "&field=" + field;
 }
 
-qtryChange = (cart_id, field, action, currentQty) => {
+qtryChange = (ele, cart_id, field) => {
 
-    let val = 0;
-
-    if (action == 1) {
-        var currentQtyint = parseInt(currentQty);
-        let sum = currentQtyint + 1;
-        val = sum.toString();
-    } else {
-        var currentQtyint = parseInt(currentQty);
-        let sum = currentQtyint - 1;
-        val = sum.toString();
-    }
-
+    var itemid = ele.id;
+    var val = document.getElementById(ele.id).value;
 
     var data = {
         cart_id: cart_id,
@@ -113,7 +103,7 @@ qtryChange = (cart_id, field, action, currentQty) => {
 
     $.ajax({
         method: "POST",
-        url: HOME_API_PATH + "editQty",
+        url: "server/api.php?function_code=editQty",
         data: data,
         success: function ($data) {
             console.log($data);
@@ -148,7 +138,7 @@ checkOut = (form) => {
                     data: data,
                     success: function ($data) {
                         console.log($data);
-                        successToastRedirect("orders.php");
+                        successToastRedirect("orderlist.php");
                     },
                     error: function (error) {
                         console.log(`Error ${error}`);
