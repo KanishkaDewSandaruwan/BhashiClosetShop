@@ -76,6 +76,7 @@
                             <tr>
                                 <th scope="col">Product</th>
                                 <th scope="col">Price</th>
+                                <th scope="col">Remove</th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Total</th>
                             </tr>
@@ -110,6 +111,9 @@
                                 </td>
                                 <td>
                                     <h5>Rs. <?php echo $row['product_price']; ?>.00</h5>
+                                </td>
+                                <td>
+                                <button onclick="cartDelete(<?php echo $row['cart_id']; ?>, 'cart', 'cart_id')" class="btn"><i class="fas fa-trash"></i></button>   
                                 </td>
                                 <td>
                                     <div class="product_count">
@@ -174,7 +178,7 @@
                             </tr>
                             <tr class="out_button_area">
                                 <td>
-
+                        
                                 </td>
                                 <td>
 

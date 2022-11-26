@@ -18,6 +18,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
@@ -64,10 +65,15 @@
                                     <p>
                                         <?php echo $res['header_desc']; ?>
                                     </p>
-                                    <div class="add-bag d-flex align-items-center">
-                                        <a class="add-btn" href="shop.php"><span class="lnr lnr-cross"></span></a>
-                                        <span class="add-text text-uppercase">Shop Now</span>
-                                    </div>
+                                    <form method="post">
+                                        <div class="input-group rounded">
+                                            <input type="search" class="form-control rounded" name="key" id="key" placeholder="Search"/>
+                                            <button type="button" onclick="search(this.form)" class="input-group-text border-0" id="search-addon">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+
                                 </div>
                             </div>
                             <div class="col-lg-7">
@@ -86,10 +92,15 @@
                                     <p>
                                         <?php echo $res['header_desc']; ?>
                                     </p>
-                                    <div class="add-bag d-flex align-items-center">
-                                        <a class="add-btn" href="shop.php"><span class="lnr lnr-cross"></span></a>
-                                        <span class="add-text text-uppercase">Shop Now</span>
-                                    </div>
+                                    <form method="post">
+                                        <div class="input-group rounded">
+                                            <input type="text" class="form-control rounded" name="key" id="key" placeholder="Search"
+                                                aria-label="Search" aria-describedby="search-addon" />
+                                            <button type="button" onclick="search(this.form)" class="input-group-text border-0" id="search-addon">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                             <div class="col-lg-7">
@@ -396,14 +407,15 @@
                             $img_src = "server/uploads/products/" . $img;
                             if ($count < 6) { ?>
                         <div class="single-exclusive-slider">
-                            <img class="img-fluid" style="width: 100%; height: 300px;" src="<?php echo $img_src; ?>" alt="">
+                            <img class="img-fluid" style="width: 100%; height: 300px;" src="<?php echo $img_src; ?>"
+                                alt="">
                             <div class="product-details">
                                 <div class="price">
                                     <h6>Rs.
                                         <?php echo $row3['product_price']; ?>.00</h6>
                                 </div>
                                 <h4> <?php echo $row3['product_name']; ?></h4>
-                                        <div class="prd-bottom">
+                                <div class="prd-bottom">
                                     <button class="btn btn-outline-primary m-1" type="button"
                                         onclick="addtoCartProduct(<?php echo $pid; ?>, <?php echo $row2['product_price']; ?>)">Add
                                         to Cart</button>

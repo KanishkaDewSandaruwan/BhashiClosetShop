@@ -148,10 +148,12 @@
                     <?php
                 if(isset($_REQUEST['cat_id']) && $_REQUEST['cat_id'] != ""){
                     $getallCp = getAllProductItemsByCategory($_REQUEST['cat_id']);
+                }else if(isset($_REQUEST['key']) && $_REQUEST['key'] != ""){
+                    $getallCp = getAllItemsSearch($_REQUEST['key']);
                 }else{
                     $getallCp = getAllAvailableItems();
                 }
-
+                
                 while ($row2 = mysqli_fetch_assoc($getallCp)) {
                     $pid = $row2['pid'];
                     $img = $row2['product_image'];
@@ -159,6 +161,7 @@
 
                     <div class="col-lg-3 col-md-6">
                         <div class="single-product" style="height: 350px;">
+                            <a href="single-product.php?pid=<?php echo $pid; ?>">
                             <div class="col-md-12">
                                 <img class="img-fluid" style="height: 150px;" src="<?php echo $img_src; ?>" alt="">
                             </div>
@@ -171,6 +174,7 @@
                                         <?php echo $row2['product_price']; ?>.00
                                     </h6>
                                 </div>
+                            </a>
                                 <div class="prd-bottom">
                                     <button class="btn btn-outline-primary m-1" type="button" onclick="addtoCartProduct(<?php echo $pid; ?>, <?php echo $row2['product_price']; ?>)">Add to Cart</button>
                                 </div>

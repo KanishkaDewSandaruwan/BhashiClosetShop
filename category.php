@@ -24,7 +24,6 @@
                             <li class="nav-item "><a class="nav-link" href="index.php">Home</a></li>
                             <li class="nav-item submenu dropdown">
                                 <a href="shop.php" class="nav-link dropdown-toggle">Shop</a>
-
                             </li>
 
                             <li class="nav-item "><a class="nav-link" href="contact.php">Contact</a></li>

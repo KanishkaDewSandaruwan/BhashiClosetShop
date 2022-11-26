@@ -467,8 +467,8 @@ callUpdateRequestFromHome = (data) => {
 
 
 search = (form) => {
-    console.log("clicked");
     var formData = new FormData(form);
+    console.log(formData.get('key'));
     var keyword = formData.get('key');
-    window.location.href = "search.php?key=" + keyword;
+    window.location.href = "shop.php?key=" + keyword;
 }

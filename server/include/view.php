@@ -309,37 +309,13 @@ function getAllOrderItemsBYOrder($order_id){
 	return mysqli_query($con,$viewcat);
 }
 
-function getDailyReport(){
-	include 'connection.php';
-
-	$viewcat = "SELECT * FROM product_orders WHERE DAY(date_updated) = DAY(now())";
-	return mysqli_query($con,$viewcat);
-}
-
-function getWeeklyReport(){
-	include 'connection.php';
-
-	$NewDate=Date('y:m:d', strtotime('-7 days'));
-
-	$viewcat = "SELECT * FROM product_orders WHERE NOT(date_updated < '$NewDate'  OR date_updated >  now())";
-	return mysqli_query($con,$viewcat);
-}
-
-function getMonthlyReport(){
-	include 'connection.php';
-
-	$NewDate=Date('y:m:d', strtotime('-7 days'));
-
-	$viewcat = "SELECT * FROM product_orders WHERE MONTH(date_updated) = MONTH(now())";
-	return mysqli_query($con,$viewcat);
-}
 
 //count
 
 function dataCount($table){
 	include 'connection.php';
 
-	$counts = "SELECT * FROM $table";
+	$counts = "SELECT * FROM $table WHERE is_deleted = 0";
 	$res =  mysqli_query($con,$counts);
     $count =  mysqli_num_rows($res);
     echo $count;
@@ -354,26 +330,18 @@ function dataCountwithCondition($table, $condition){
     echo $count;
 
 }
-function reviewCount($pid){
-	include 'connection.php';
-
-	$counts = "SELECT * FROM review WHERE review_pid = '$pid'";
-	$res =  mysqli_query($con,$counts);
-    $count =  mysqli_num_rows($res);
-    echo $count;
-}
 
 function dataforCount($table){
 	include 'connection.php';
 
-	$counts = "SELECT sum(total) as sum FROM $table";
+	$counts = "SELECT sum(total) as sum FROM $table WHERE is_deleted = 0";
     return mysqli_query($con,$counts);
 }
 
 function dataforCountToday($table){
 	include 'connection.php';
 
-	$counts = "SELECT sum(total) as sum FROM $table WHERE month(now()) = month(date_updated)";
+	$counts = "SELECT sum(total) as sum FROM $table WHERE month(now()) = month(date_updated) AND is_deleted = 0";
     return mysqli_query($con,$counts);
 }
 ?>

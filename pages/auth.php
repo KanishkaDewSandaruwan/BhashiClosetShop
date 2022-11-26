@@ -5,7 +5,7 @@ if (session_id() == '') {
 }
 
     if(!isset($_SESSION['customer'])){
-        header("Location: admin/login.php");
+        header("Location: admin/signin.php");
     }else{
         $getall = getAllcustomerById($_SESSION['customer']);
         $cus=mysqli_fetch_assoc($getall);
