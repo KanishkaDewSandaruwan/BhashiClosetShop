@@ -78,17 +78,17 @@
 						<div class="info_item">
 							<i class="lnr lnr-home"></i>
 							<h6><?php echo $res['company_address']; ?></h6>
-							<p><?php echo $res['opening']; ?></p>
+	
 						</div>
-						<div class="info_item">
+						<div class="info_item mt-5">
 							<i class="lnr lnr-phone-handset"></i>
 							<h6><a href="#"><?php echo $res['company_phone']; ?></a></h6>
-							<p><?php echo $res['opening']; ?></p>
+	
 						</div>
-						<div class="info_item">
+						<div class="info_item mt-5">
 							<i class="lnr lnr-envelope"></i>
 							<h6><a href="#"><?php echo $res['company_email']; ?></a></h6>
-							<p><?php echo $res['opening']; ?></p>
+	
 	
 						</div>
 					</div>

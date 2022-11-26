@@ -396,7 +396,8 @@
                     <a href="shop.php" class="primary-btn">Shop Now</a>
                 </div>
                 <div class="col-lg-6 no-padding exclusive-right">
-                    <div class="active-exclusive-product-slider">
+                    <h1>Fast Moving Items</h1>
+                    <div class="active-exclusive-product-slider mt-5">
                         <!-- single exclusive carousel -->
                         <?php
                         $getallCp2 = getAllAvailableItems();

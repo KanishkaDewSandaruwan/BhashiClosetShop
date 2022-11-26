@@ -191,7 +191,10 @@
                                                     <hr>
                                                     <?php
                                                         $setting = getAllSettings();
-                                                        if($res = mysqli_fetch_assoc($setting)){ ?>
+                                                        if($res = mysqli_fetch_assoc($setting)){ 
+                                                            
+                                                            $img = $res['about_image'];
+                                                        $img_src = "../server/uploads/settings/".$img;?>
 
                                                     <div class="col-md-12 mt-3">
                                                         <label for="validationCustom01" class="form-label">About
@@ -210,6 +213,19 @@
                                                             class="form-control" id="about_desc"
                                                             placeholder="Company Email Address" required>
                                                     </div>
+                                                    <form class="mt-3" method="POST" enctype="multipart/form-data">
+                                                        <div class="mb-3">
+                                                            <input type="hidden" name="field" id="field"
+                                                                value="about_image">
+                                                            <label for="formFile" class="form-label">About Image
+                                                                file</label>
+                                                            <input class="form-control"
+                                                                onchange="uploadSettingImage(this.form);" name="file"
+                                                                type="file" id="formFile">
+                                                        </div>
+
+                                                    </form>
+                                                    <img class="mt-2" width="200px" src='<?php echo $img_src; ?>'>
 
 
 
